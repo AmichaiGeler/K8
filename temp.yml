@@ -1,0 +1,20 @@
+nt-storage
+    emptyDir: {}apiVersion: v1
+kind: Pod
+metadata:
+  name: app1
+spec:
+  containers:
+  - name: supergiantkir
+    image: supergiantkir/animals:bear
+    volumeMounts:
+    - name: redis-persistent-storage
+      mountPath: /storage
+  - name: springapp
+    image: yanivomc/spring-music:latest
+    volumeMounts:
+    - name: redis-persistent-storage
+      mountPath: /storage
+  volumes:
+  - name: app-storage
+  - type: HostType
